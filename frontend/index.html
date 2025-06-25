@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popcorn Menu</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+<body>
+<div id="app">
+  <h1>Menu</h1>
+  <div class="items">
+    <div v-for="item in items" :key="item.id" class="item" @click="selectItem(item)">
+      <img :src="item.image" :alt="item.name">
+      <p>{{ item.name }} - {{ item.price }}đ</p>
+    </div>
+  </div>
+  <div v-if="selected" class="popup">
+    <h3>{{ selected.name }}</h3>
+    <ul>
+      <li v-for="shop in shops" :key="shop.name">
+        <a :href="shop.link" target="_blank">{{ shop.name }}</a>
+      </li>
+    </ul>
+    <button @click="selected=null">Close</button>
+  </div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
